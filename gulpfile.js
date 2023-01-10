@@ -32,9 +32,9 @@ function style() {
     .pipe(browserSync.stream());
 };
 
-/* copy html */
-function markup() {
-  return gulp.src('./source/**/*.html')
+/* copy php */
+function process() {
+  return gulp.src('./source/**/*.php')
     .pipe(gulp.dest('./build'));
 };
 
@@ -54,11 +54,11 @@ function sync() {
   });
   gulp.watch('./source/js/**/*.js', script).on('change', browserSync.reload);
   gulp.watch('./source/scss/**/*.scss', style).on('change', browserSync.reload);
-  gulp.watch('./source/**/*.html', markup).on('change', browserSync.reload);
+  gulp.watch('./source/**/*.php', process).on('change', browserSync.reload);
 };
 
 exports.script = script;
 exports.style = style;
-exports.markup = markup;
+exports.process = process;
 exports.compress = compress;
 exports.sync = sync;
