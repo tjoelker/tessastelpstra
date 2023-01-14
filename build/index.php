@@ -8,6 +8,8 @@
   <script src='./script/main.js' type='text/javascript' defer></script>
 </head>
 <body>
-
+  <?php
+    require(__DIR__ . '/view' . '/_body.php');
+  ?>
 </body>
 </html>
