@@ -3,7 +3,14 @@
   <nav>
     <ul>
       <li>
-        <a href='#'>menu</a>
+        <a href='#'>
+          <span>Over</span>
+        </a>
+      </li>
+      <li>
+        <a href='#'>
+          <span>Contact</span>
+        </a>
       </li>
     </ul>
   </nav>
