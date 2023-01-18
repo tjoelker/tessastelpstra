@@ -1,3 +1,4 @@
+<!-- footer.php -->
 <footer>
   <ul>
     <li>
