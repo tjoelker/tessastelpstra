@@ -1,0 +1,17 @@
+// 1. Variables
+// 1.1 Global variables
+// 2. Mixins
+
+// 1. Variables
+// 1.1 Global variables
+$dimension-100-percent: 100%;
+
+// 2. Mixins
+@mixin object-fixed(
+  $x-axis: left,
+  $y-axis: top
+) {
+  position: fixed;
+  #{$x-axis}: 0;
+  #{$y-axis}: 0;
+}

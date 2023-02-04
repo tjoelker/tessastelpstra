@@ -1,0 +1,7 @@
+// Footer
+footer {
+  @include object-fixed(
+    $y-axis: left,
+    $x-axis: bottom
+  );
+}

@@ -1,0 +1,5 @@
+// Header
+header {
+  @include object-fixed();
+  color: purple;
+}

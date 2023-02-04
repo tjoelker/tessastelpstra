@@ -1,0 +1,14 @@
+// Main
+main {
+  @include object-fixed();
+  width: $dimension-100-percent;
+  height: $dimension-100-percent;
+
+  .viewport {
+    width: $dimension-100-percent;
+    height: $dimension-100-percent;
+    perspective: 300px;
+    perspective-origin: 50% 50%;
+    transform-style: preserve-3d;
+  }
+}
