@@ -9,7 +9,7 @@
 </head>
 <body>
   <?php
-    require(__DIR__ . '/view' . '/_body.php');
+    require(__DIR__ . '/view' . '/body.php');
   ?>
 </body>
 </html>

@@ -44,6 +44,6 @@
     $case = $case;
     $image = $image;
 
-    require(__DIR__ . '/card.php');
+    require(__DIR__ . '/case.php');
   }
 ?>

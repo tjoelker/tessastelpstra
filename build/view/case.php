@@ -1,4 +1,4 @@
-<!-- card.php -->
+<!-- case.php -->
 <?php
   $path_cases = "/assets" . "/case" . "/$case" . "/";
   $case = str_replace(
@@ -8,9 +8,9 @@
   );
   $image = $path_cases . $image[1];
 ?>
-<section class="row">
+<section class="row component-case">
   <div class="card card-case">
-    <a href="<?php print_r($path_cases); ?>">
+    <a href="<?php /* print_r($path_cases); */ ?>">
       <figure class="image-wrapper">
         <img class="image" alt="" src="<?php print_r($image); ?>">
       </figure>
