@@ -4,4 +4,12 @@ footer {
     $y-axis: left,
     $x-axis: bottom
   );
+  padding: $gutter;
+  z-index: 1;
+
+  .menu-list {
+    @include clear-list-style-type;
+    display: flex;
+    gap: $gutter;
+  }
 }

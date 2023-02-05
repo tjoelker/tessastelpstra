@@ -3,6 +3,8 @@ main {
   @include object-fixed();
   width: $dimension-100-percent;
   height: $dimension-100-percent;
+  padding: $gutter;
+  z-index: 0;
 
   .viewport {
     width: $dimension-100-percent;

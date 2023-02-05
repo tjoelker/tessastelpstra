@@ -5,6 +5,7 @@
 // 1. Variables
 // 1.1 Global variables
 $dimension-100-percent: 100%;
+$gutter: 16px;
 
 // 2. Mixins
 @mixin object-fixed(
@@ -14,4 +15,10 @@ $dimension-100-percent: 100%;
   position: fixed;
   #{$x-axis}: 0;
   #{$y-axis}: 0;
+}
+
+@mixin clear-list-style-type {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }

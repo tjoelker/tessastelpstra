@@ -1,5 +1,12 @@
 // Header
 header {
   @include object-fixed();
-  color: purple;
+  padding: $gutter;
+  z-index: 1;
+
+  .menu-list {
+    @include clear-list-style-type;
+    display: flex;
+    gap: $gutter;
+  }
 }

@@ -3,7 +3,6 @@
   position: absolute;
   width: $dimension-100-percent;
   height: $dimension-100-percent;
-  background: slategray;
   transform-style: preserve-3d;
 
   &:first-child {
@@ -12,5 +11,40 @@
 
   &:not(:first-child) {
     z-index: 0;
+  }
+
+  .content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $dimension-100-percent;
+    height: $dimension-100-percent;
+
+    .card-case {
+      background: slategray;
+      height: $dimension-100-percent;
+
+      .card-wrapper {
+        display: flex;
+        flex-direction: column;
+        height: $dimension-100-percent;
+
+        .image-wrapper {
+          margin: 0;
+          min-width: 0;
+          max-width: 100%;
+          max-height: $dimension-100-percent*.9;
+
+          img {
+            max-height: $dimension-100-percent;
+          }
+        }
+
+        .heading {
+          margin: 0;
+          flex-grow: 2;
+        }
+      }
+    }
   }
 }
