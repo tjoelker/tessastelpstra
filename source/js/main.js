@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     zAxisSpacingValues.unshift((cases.length - (i + 1)) * zAxisSpacing);
   }
 
-  let bodyHeight = Math.abs(zAxisSpacingValues[cases.length - 1]); // + 281.35(?)
+  let bodyHeight = Math.abs(zAxisSpacingValues[cases.length - 1] + zAxisSpacing); // + 281.35(?)
   document.body.style.height = `${bodyHeight}px`;
 
   window.addEventListener('scroll', () => {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let componentCase = cases[i],
           newZAxisValue = (zAxisSpacingValues[i] += (delta * -1.5)),
           transform = newZAxisValue,
-          opacity = newZAxisValue < 200 ? 1 : 1 - parseInt((newZAxisValue - 200) / (perspective - 200) * 10) / 10,
+          opacity = newZAxisValue < 0 ? 1 : 1 - parseInt((newZAxisValue - 200) / (perspective - 200) * 10) / 10,
           display = newZAxisValue > perspective ? 'none' : 'block';
       
       componentCase.style.transform = `translateZ(${transform}px)`;

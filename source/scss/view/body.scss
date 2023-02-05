@@ -2,7 +2,7 @@
 body {
   // position: inherit;
   width: $dimension-100-percent;
-  height: auto;
+  height: auto; /* is set in source/js/main.js */
   margin: 0;
   padding: 0;
 }

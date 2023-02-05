@@ -5,4 +5,12 @@
   height: $dimension-100-percent;
   background: slategray;
   transform-style: preserve-3d;
+
+  &:first-child {
+    z-index: 1;
+  }
+
+  &:not(:first-child) {
+    z-index: 0;
+  }
 }
