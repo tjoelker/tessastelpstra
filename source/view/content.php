@@ -1,11 +1,97 @@
 <!-- content.php -->
 <?php
-  $path_cases = __DIR__ . "/.." . "/assets" . "/case" . "/";
-  $cases = scandir($path_cases);
+  $cases_path = __DIR__ . "/.." . "/assets" . "/case" . "/";
+  $cases_folder = sanitize(scandir($cases_path));
+  $cases = array();
 
-  printCases($path_cases, clearJunkFiles($cases));
+  /**
+   * Class template for constructing a case object.
+   */
+  class caseComponent
+  {
+    /**
+     * The folder name of the case, used for constructing paths.
+     * @var string
+     */
+    public $folder_name;
 
-  function clearJunkFiles(array $folder)
+    /**
+     * The title of the case.
+     * @var string
+     */
+    public $title;
+
+    /**
+     * The body text of the case.
+     * @var string
+     */
+    public $paragraph;
+
+    /**
+     * The image collection of the case.
+     * @var array
+     */
+    public $images;
+    
+    /**
+     * The image thumbnail to display in the case card.
+     * @var array
+     */
+    public $thumbnail;
+
+    /**
+     * The slug for the case.
+     * @var string
+     * @todo /!\ Refinement
+     */
+    public $link;
+
+    function __construct(
+      $_case,
+      $_title,
+      $_paragraph,
+      $_images,
+      $_thumbnail,
+      $_link,
+    ) {
+      $this->folder_name = $_case;
+      $this->title = $_title;
+      $this->paragraph = $_paragraph;
+      $this->images = $_images;
+      $this->thumbnail = $_thumbnail;
+      $this->link = $_link;
+    }
+  }
+
+  foreach ($cases_folder as $case)
+  {
+    $case_path = $cases_path . "$case" . "/";
+    $case_folder = sanitize(scandir($case_path));
+    $case_title = trim(str_replace("_", " ", $case));
+    $case_paragraph = file_get_contents($case_path . implode("", getFileCollection($case_folder, "txt")));
+    $case_images = getFileCollection($case_folder, 'jpg');
+    $case_thumbnail = $case_images[0]; /* /!\ Needs refinement */
+    $case_link = null; /* /!\ Needs refinement */
+
+    $case = new caseComponent(
+      $case,
+      $case_title,
+      $case_paragraph,
+      $case_images,
+      $case_thumbnail,
+      $case_link,
+    );
+    
+    array_push($cases, $case);
+  }
+
+  renderCaseCards($cases_path, $cases);
+
+  /**
+   * Function to remove unwanted files.
+   * @return array
+   */
+  function sanitize(array $folder)
   {
     $junk_files = array(
       0 => ".",
@@ -25,25 +111,35 @@
     return array_values($folder);
   }
 
-  function printCases(string $path, array $cases)
+  /**
+   * Function to get collection of files with specified extension.
+   * @return array
+   */
+  function getFileCollection(array $folder, string $extension) 
+  {
+    $array = array();
+
+    foreach ($folder as $file) 
+    {
+      if (pathinfo($file)["extension"] === $extension)
+      {
+        array_push($array, $file);
+      }
+    }
+    
+    return $array;
+  }
+
+  function renderCaseCards(string $path, array $cases)
   {
     foreach ($cases as $case)
     {
-      $heading = $case;
-      $path_case = $path . "$case" . "/";
-      $case = clearJunkFiles(scandir($path_case));
+      $case_path = "/assets" . "/case" . "/" . $case->folder_name . "/";
+      $heading = $case->title;
+      $thumbnail = $case->thumbnail;
+      $slug = $case->link;
 
-      // insert regex to pick first image in folder (array)
-
-      printCaseCard($heading, $case);
+      require(__DIR__ . '/case.php');
     }
-  }
-
-  function printCaseCard(string $case, array $image)
-  {
-    $case = $case;
-    $image = $image;
-
-    require(__DIR__ . '/case.php');
   }
 ?>

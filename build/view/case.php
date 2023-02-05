@@ -1,21 +1,12 @@
 <!-- case.php -->
-<?php
-  $path_cases = "/assets" . "/case" . "/$case" . "/";
-  $case = str_replace(
-    "_",
-    " ",
-    $case,
-  );
-  $image = $path_cases . $image[1];
-?>
 <section class="row component-case">
   <div class="card card-case">
-    <a href="<?php /* print_r($path_cases); */ ?>">
+    <a href="<?php /* print_r($cases_path); */ ?>">
       <figure class="image-wrapper">
-        <img class="image" alt="" src="<?php print_r($image); ?>">
+        <img class="image" alt="" src="<?php print_r($case_path . $thumbnail); ?>">
       </figure>
       <div>
-        <h2 class="heading"><?php print_r($case); ?></h2>
+        <h2 class="heading"><?php print_r($heading); ?></h2>
       </div>
     </a>
   </div>
