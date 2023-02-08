@@ -1,15 +1,18 @@
 // Main
 main {
   @include object-fixed();
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: $dimension-100-percent;
   height: $dimension-100-percent;
   padding: $gutter;
   z-index: 0;
 
   .viewport {
-    width: $dimension-100-percent;
+    width: $dimension-100-percent*.8;
     height: $dimension-100-percent;
-    perspective: 300px;
+    perspective: $perspective;
     perspective-origin: 50% 50%;
     transform-style: preserve-3d;
   }

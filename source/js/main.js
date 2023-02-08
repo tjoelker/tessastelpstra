@@ -28,9 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
           opacity = newZAxisValue < 0 ? 1 : 1 - parseInt((newZAxisValue - 200) / (perspective - 200) * 10) / 10,
           display = newZAxisValue > perspective ? 'none' : 'block';
       
-      componentCase.style.transform = `translateZ(${transform}px)`;
+      componentCase.style.transform = `translate3d(0, 0, ${transform}px)`;
       componentCase.style.opacity = opacity;
       componentCase.style.display = display;
+      componentCase.querySelector('.card-case .image-wrapper img').style.filter = `blur(${Math.abs(transform) / 100}px)`;
     }
   }
 });

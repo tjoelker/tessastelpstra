@@ -10,6 +10,7 @@ body {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
+  pointer-events: none;
 }
 .component-case:first-child {
   z-index: 1;
@@ -23,24 +24,34 @@ body {
   justify-content: center;
   width: 100%;
   height: 100%;
+  padding: 64px;
+  pointer-events: none;
+}
+.component-case .content-wrapper.content-horizontal-left {
+  justify-content: start;
+}
+.component-case .content-wrapper.content-horizontal-right {
+  justify-content: end;
+}
+.component-case .content-wrapper.content-vertical-top {
+  align-items: start;
+}
+.component-case .content-wrapper.content-vertical-bottom {
+  align-items: end;
 }
 .component-case .content-wrapper .card-case {
-  background: slategray;
-  height: 100%;
+  pointer-events: auto;
 }
 .component-case .content-wrapper .card-case .card-wrapper {
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 .component-case .content-wrapper .card-case .card-wrapper .image-wrapper {
   margin: 0;
-  min-width: 0;
-  max-width: 100%;
-  max-height: 90%;
 }
 .component-case .content-wrapper .card-case .card-wrapper .image-wrapper img {
-  max-height: 100%;
+  max-width: 72vw;
+  max-height: 72vh;
 }
 .component-case .content-wrapper .card-case .card-wrapper .heading {
   margin: 0;
@@ -81,15 +92,18 @@ main {
   position: fixed;
   left: 0;
   top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
   padding: 16px;
   z-index: 0;
 }
 main .viewport {
-  width: 100%;
+  width: 80%;
   height: 100%;
-  perspective: 300px;
+  perspective: 1000px;
   perspective-origin: 50% 50%;
   transform-style: preserve-3d;
 }
@@ -107,4 +121,5 @@ html {
   height: 100%;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
