@@ -33,15 +33,15 @@
       }
     }
 
-    &.content-vertical {
-      &-top {
-        align-items: start;
-      }
+    // &.content-vertical {
+    //   &-top {
+    //     align-items: start;
+    //   }
 
-      &-bottom {
-        align-items: end;
-      }
-    }
+    //   &-bottom {
+    //     align-items: end;
+    //   }
+    // }
 
     .card-case {
       pointer-events: auto; 

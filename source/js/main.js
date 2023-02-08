@@ -1,15 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
   let cases = document.querySelectorAll('.component-case'),
       scrollPosition = document.body.scrollTop || document.documentElement.scrollTop,
-      perspective = 300,
+      perspective = 333.334,
       zAxisSpacing = -1000,
-      zAxisSpacingValues = new Array;
+      zAxisSpacingValues = new Array,
+      bodyHeight = ((cases.length - 1) * 666.667) + document.documentElement.clientHeight;
   
   for (let i = 0; i < cases.length; i++) {
     zAxisSpacingValues.unshift((cases.length - (i + 1)) * zAxisSpacing);
   }
 
-  let bodyHeight = Math.abs(zAxisSpacingValues[cases.length - 1] + zAxisSpacing); // + 281.35(?)
+  zAxisScrollPosition();
+
   document.body.style.height = `${bodyHeight}px`;
 
   window.addEventListener('scroll', () => {
@@ -31,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       componentCase.style.transform = `translate3d(0, 0, ${transform}px)`;
       componentCase.style.opacity = opacity;
       componentCase.style.display = display;
-      componentCase.querySelector('.card-case .image-wrapper img').style.filter = `blur(${Math.abs(transform) / 100}px)`;
+      componentCase.querySelector('.card-case .image-wrapper img').style.filter = `blur(${transform * -0.011}px)`; // /!\ needs refinement
     }
   }
 });

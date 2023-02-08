@@ -1,15 +1,17 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', function() {
-  for (var a = document.querySelectorAll('.component-case'), s = document.body.scrollTop || document.documentElement.scrollTop, d = new Array(), e = 0; e < a.length; e++) d.unshift(-1e3 * (a.length - (e + 1)));
-  var t = Math.abs(d[a.length - 1] + -1e3);
-  document.body.style.height = ''.concat(t, 'px'), window.addEventListener('scroll', function() {
-    var e = document.body.scrollTop || document.documentElement.scrollTop, t = s - e;
-    s = e;
-    for (var o = 0; o < a.length; o++) {
-      var n = a[o], c = d[o] += -1.5 * t, l = c, r = c < 0 ? 1 : 1 - parseInt((c - 200) / 100 * 10) / 10, c = 300 < c ? 'none' : 'block';
-      n.style.transform = 'translate3d(0, 0, '.concat(l, 'px)'), n.style.opacity = r, 
-      n.style.display = c, n.querySelector('.card-case .image-wrapper img').style.filter = 'blur('.concat(Math.abs(l) / 100, 'px)');
+  for (var d = document.querySelectorAll('.component-case'), a = document.body.scrollTop || document.documentElement.scrollTop, s = 333.334, u = new Array(), e = 666.667 * (d.length - 1) + document.documentElement.clientHeight, t = 0; t < d.length; t++) u.unshift(-1e3 * (d.length - (t + 1)));
+  function n() {
+    var e = document.body.scrollTop || document.documentElement.scrollTop, t = a - e;
+    a = e;
+    for (var n = 0; n < d.length; n++) {
+      var o = d[n], c = u[n] += -1.5 * t, l = c, r = c < 0 ? 1 : 1 - parseInt((c - 200) / (s - 200) * 10) / 10, c = s < c ? 'none' : 'block';
+      o.style.transform = 'translate3d(0, 0, '.concat(l, 'px)'), o.style.opacity = r, 
+      o.style.display = c, o.querySelector('.card-case .image-wrapper img').style.filter = 'blur('.concat(-.011 * l, 'px)');
     }
+  }
+  n(), document.body.style.height = ''.concat(e, 'px'), window.addEventListener('scroll', function() {
+    n();
   });
 });

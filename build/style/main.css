@@ -33,12 +33,6 @@ body {
 .component-case .content-wrapper.content-horizontal-right {
   justify-content: end;
 }
-.component-case .content-wrapper.content-vertical-top {
-  align-items: start;
-}
-.component-case .content-wrapper.content-vertical-bottom {
-  align-items: end;
-}
 .component-case .content-wrapper .card-case {
   pointer-events: auto;
 }
