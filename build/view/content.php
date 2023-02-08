@@ -132,12 +132,28 @@
 
   function renderCaseCards(string $path, array $cases)
   {
+    $horizontal_index = 0;
+    $vertical_index_list = array(
+      0 => true,
+      1 => false,
+      2 => false,
+      3 => true
+    );
+
     foreach ($cases as $case)
     {
       $case_path = "/assets" . "/case" . "/" . $case->folder_name . "/";
       $heading = $case->title;
       $thumbnail = $case->thumbnail;
       $slug = $case->link;
+
+      if ($horizontal_index === 4)
+      {
+        $horizontal_index = 0;
+      }
+
+      $vertical_index = $vertical_index_list[$horizontal_index];
+      $horizontal_index++;
 
       require(__DIR__ . '/case.php');
     }
