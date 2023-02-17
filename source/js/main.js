@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       componentCase.style.transform = `translate3d(0, 0, ${transform}px)`;
       componentCase.style.opacity = opacity;
       componentCase.style.display = display;
-      componentCase.querySelector('.card-case .image-wrapper img').style.filter = `blur(${transform * -0.011}px)`; // /!\ needs refinement
+      // componentCase.querySelector('.card-case .image-wrapper img').style.filter = `blur(${transform * -0.011}px)`; // /!\ needs refinement
     }
   }
 });
