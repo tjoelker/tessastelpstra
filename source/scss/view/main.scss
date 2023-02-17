@@ -1,12 +1,12 @@
 // Main
 main {
-  @include object-fixed();
+  background-color: sandybrown;
   display: flex;
   align-items: center;
+  flex: 1;
   justify-content: center;
   width: $dimension-100-percent;
   height: $dimension-100-percent;
-  padding: $gutter;
   z-index: 0;
 
   .viewport {
@@ -17,3 +17,9 @@ main {
     transform-style: preserve-3d;
   }
 }
+
+// Overwrite for homepage
+.home-page main {
+    @include object-fixed();
+    padding: $gutter;
+  }

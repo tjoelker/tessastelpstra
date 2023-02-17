@@ -1,8 +1,15 @@
 // Body
 body {
-  // position: inherit;
   width: $dimension-100-percent;
-  height: auto; /* is set in source/js/main.js */
+  height: $dimension-100-percent;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+// Overwrite for homepage
+.home-page > body {
+  height: auto; /* is set in source/js/main.js */
+  display: block;
 }

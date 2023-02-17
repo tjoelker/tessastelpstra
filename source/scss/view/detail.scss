@@ -1,0 +1,53 @@
+// Detail
+.case-detail {
+  width: $dimension-100-percent;
+  height: $dimension-100-percent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: $gutter;
+
+  .copy {
+    background: peachpuff;
+    padding: 0 $gutter;
+    display: flex;
+    gap: $gutter;
+    justify-content: space-between;
+
+    .heading {
+      flex: 1;
+    }
+
+    .paragraph {
+      flex: 1;
+    }
+  }
+
+  .gallery {
+    background: paleturquoise;
+    display: flex;
+    flex: 3;
+    overflow-y: hidden;
+
+    .gallery-wrapper {
+      padding: 0 $gutter;
+      width: auto;
+      height: $dimension-100-percent;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: $gutter;
+      justify-content: space-around;
+
+      figure {
+        min-height: 100%;
+
+        &:last-child::after {
+          content: '';
+          width: 32px;
+          height: 100%;
+        }
+      }
+    }
+  }
+}

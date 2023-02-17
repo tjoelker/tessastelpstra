@@ -1,6 +1,5 @@
 // Header
 header {
-  @include object-fixed();
   padding: $gutter;
   z-index: 1;
 
@@ -9,4 +8,9 @@ header {
     display: flex;
     gap: $gutter;
   }
+}
+
+// Overwrite for homepage
+.home-page header {
+  @include object-fixed();
 }

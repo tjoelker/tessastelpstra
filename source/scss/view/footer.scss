@@ -1,9 +1,5 @@
 // Footer
 footer {
-  @include object-fixed(
-    $y-axis: left,
-    $x-axis: bottom
-  );
   padding: $gutter;
   z-index: 1;
 
@@ -12,4 +8,12 @@ footer {
     display: flex;
     gap: $gutter;
   }
+}
+
+// Overwrite for homepage
+.home-page footer {
+  @include object-fixed(
+    $y-axis: left,
+    $x-axis: bottom
+  );
 }

@@ -1,8 +1,15 @@
 body {
   width: 100%;
-  height: auto; /* is set in source/js/main.js */
+  height: 100%;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-page > body {
+  height: auto; /* is set in source/js/main.js */
+  display: block;
 }
 
 .component-case {
@@ -40,9 +47,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-.component-case .content-wrapper .card-case .card-wrapper .image-wrapper {
-  margin: 0;
-}
 .component-case .content-wrapper .card-case .card-wrapper .image-wrapper img {
   max-width: 72vw;
   max-height: 72vh;
@@ -52,11 +56,54 @@ body {
   flex-grow: 2;
 }
 
+.case-detail {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+}
+.case-detail .copy {
+  background: peachpuff;
+  padding: 0 32px;
+  display: flex;
+  gap: 32px;
+  justify-content: space-between;
+}
+.case-detail .copy .heading {
+  flex: 1;
+}
+.case-detail .copy .paragraph {
+  flex: 1;
+}
+.case-detail .gallery {
+  background: paleturquoise;
+  display: flex;
+  flex: 3;
+  overflow-y: hidden;
+}
+.case-detail .gallery .gallery-wrapper {
+  padding: 0 32px;
+  width: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 32px;
+  justify-content: space-around;
+}
+.case-detail .gallery .gallery-wrapper figure {
+  min-height: 100%;
+}
+.case-detail .gallery .gallery-wrapper figure:last-child::after {
+  content: "";
+  width: 32px;
+  height: 100%;
+}
+
 footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  padding: 16px;
+  padding: 32px;
   z-index: 1;
 }
 footer .menu-list {
@@ -64,14 +111,17 @@ footer .menu-list {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 16px;
+  gap: 32px;
+}
+
+.home-page footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 
 header {
-  position: fixed;
-  left: 0;
-  top: 0;
-  padding: 16px;
+  padding: 32px;
   z-index: 1;
 }
 header .menu-list {
@@ -79,19 +129,23 @@ header .menu-list {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 16px;
+  gap: 32px;
 }
 
-main {
+.home-page header {
   position: fixed;
   left: 0;
   top: 0;
+}
+
+main {
+  background-color: sandybrown;
   display: flex;
   align-items: center;
+  flex: 1;
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 16px;
   z-index: 0;
 }
 main .viewport {
@@ -100,6 +154,13 @@ main .viewport {
   perspective: 1000px;
   perspective-origin: 50% 50%;
   transform-style: preserve-3d;
+}
+
+.home-page main {
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 32px;
 }
 
 * {
@@ -116,4 +177,21 @@ html {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+figure {
+  margin: 0;
 }

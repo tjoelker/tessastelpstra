@@ -2,6 +2,7 @@
 @import './settings';
 @import './view/body';
 @import './view/case';
+@import './view/detail';
 @import './view/footer';
 @import './view/header';
 @import './view/main';
@@ -22,4 +23,21 @@ html {
   padding: 0;
   scroll-behavior: smooth;
   // font-size: 62.5%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+figure {
+  margin: 0;
 }
