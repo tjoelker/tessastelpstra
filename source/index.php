@@ -1,15 +1,12 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang='nl-NL'>
 <head>
-  <meta charset='utf-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <title>Portfolio website of Tessa Stelpstra</title>
-  <link rel='stylesheet' href='./style/main.css' type='text/css'>
-  <script src='./script/main.js' type='text/javascript' defer></script>
+  <?php require(__DIR__ . "/view" . '/head.php'); ?>
 </head>
 <body>
-  <?php
-    require(__DIR__ . '/view' . '/body.php');
-  ?>
+  <?php require(__DIR__ . "/view" . "/body.php"); ?>
 </body>
 </html>

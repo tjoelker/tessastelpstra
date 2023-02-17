@@ -1,161 +1,161 @@
 <!-- content.php -->
 <?php
-  $cases_path = __DIR__ . "/.." . "/assets" . "/case" . "/";
-  $cases_folder = sanitize(scandir($cases_path));
-  $cases = array();
+
+$cases_path = __DIR__ . "/.." . "/assets" . "/case" . "/";
+$cases_folder = sanitize(scandir($cases_path));
+$cases = array();
+
+/**
+ * Class template for constructing a case object.
+ */
+class caseComponent
+{
+  /**
+   * The folder name of the case, used for constructing paths.
+   * @var string
+   */
+  public $folder_name;
 
   /**
-   * Class template for constructing a case object.
+   * The title of the case.
+   * @var string
    */
-  class caseComponent
-  {
-    /**
-     * The folder name of the case, used for constructing paths.
-     * @var string
-     */
-    public $folder_name;
-
-    /**
-     * The title of the case.
-     * @var string
-     */
-    public $title;
-
-    /**
-     * The body text of the case.
-     * @var string
-     */
-    public $paragraph;
-
-    /**
-     * The image collection of the case.
-     * @var array
-     */
-    public $images;
-    
-    /**
-     * The image thumbnail to display in the case card.
-     * @var array
-     */
-    public $thumbnail;
-
-    /**
-     * The slug for the case.
-     * @var string
-     * @todo /!\ Refinement
-     */
-    public $link;
-
-    function __construct(
-      $_case,
-      $_title,
-      $_paragraph,
-      $_images,
-      $_thumbnail,
-      $_link,
-    ) {
-      $this->folder_name = $_case;
-      $this->title = $_title;
-      $this->paragraph = $_paragraph;
-      $this->images = $_images;
-      $this->thumbnail = $_thumbnail;
-      $this->link = $_link;
-    }
-  }
-
-  foreach ($cases_folder as $case)
-  {
-    $case_path = $cases_path . "$case" . "/";
-    $case_folder = sanitize(scandir($case_path));
-    $case_title = trim(str_replace("_", " ", $case));
-    $case_paragraph = file_get_contents($case_path . implode("", getFileCollection($case_folder, "txt")));
-    $case_images = getFileCollection($case_folder, 'jpg');
-    $case_thumbnail = $case_images[0]; /* /!\ Needs refinement */
-    $case_link = null; /* /!\ Needs refinement */
-
-    $case = new caseComponent(
-      $case,
-      $case_title,
-      $case_paragraph,
-      $case_images,
-      $case_thumbnail,
-      $case_link,
-    );
-    
-    array_push($cases, $case);
-  }
-
-  renderCaseCards($cases_path, $cases);
+  public $title;
 
   /**
-   * Function to remove unwanted files.
-   * @return array
+   * The body text of the case.
+   * @var string
    */
-  function sanitize(array $folder)
-  {
-    $junk_files = array(
-      0 => ".",
-      1 => "..",
-    );
-
-    foreach ($junk_files as $junk)
-    {
-      $junk_key = array_search($junk, $folder);
-
-      if ($junk_key !== false)
-      {
-        unset($folder[$junk_key]);
-      }
-    }
-
-    return array_values($folder);
-  }
+  public $paragraph;
 
   /**
-   * Function to get collection of files with specified extension.
-   * @return array
+   * The image collection of the case.
+   * @var array
    */
-  function getFileCollection(array $folder, string $extension) 
-  {
-    $array = array();
+  public $images;
+  
+  /**
+   * The image thumbnail to display in the case card.
+   * @var array
+   */
+  public $thumbnail;
 
-    foreach ($folder as $file) 
+  /**
+   * The slug for the case.
+   * @var string
+   * @todo /!\ Refinement
+   */
+  public $link;
+
+  function __construct(
+    $_case,
+    $_title,
+    $_paragraph,
+    $_images,
+    $_thumbnail,
+    $_link,
+  ) {
+    $this->folder_name = $_case;
+    $this->title = $_title;
+    $this->paragraph = $_paragraph;
+    $this->images = $_images;
+    $this->thumbnail = $_thumbnail;
+    $this->link = $_link;
+  }
+}
+
+foreach ($cases_folder as $case) 
+{
+  $case_path = $cases_path . "$case" . "/";
+  $case_folder = sanitize(scandir($case_path));
+  $case_title = trim(str_replace("_", " ", $case));
+  $case_paragraph = file_get_contents($case_path . implode("", getFileCollection($case_folder, "txt")));
+  $case_images = getFileCollection($case_folder, 'jpg');
+  $case_thumbnail = $case_images[0]; /* /!\ Needs refinement */
+  $case_link = null; /* /!\ Needs refinement */
+
+  $case = new caseComponent(
+    $case,
+    $case_title,
+    $case_paragraph,
+    $case_images,
+    $case_thumbnail,
+    $case_link,
+  );
+  
+  array_push($cases, $case);
+}
+
+renderCaseCards($cases_path, $cases);
+
+/**
+ * Function to remove unwanted files.
+ * @return array
+ */
+function sanitize(array $folder)
+{
+  $junk_files = array(
+    0 => ".",
+    1 => "..",
+  );
+
+  foreach ($junk_files as $junk)
+  {
+    $junk_key = array_search($junk, $folder);
+
+    if ($junk_key !== false)
     {
-      if (pathinfo($file)["extension"] === $extension)
-      {
-        array_push($array, $file);
-      }
+      unset($folder[$junk_key]);
     }
-    
-    return $array;
   }
 
-  function renderCaseCards(string $path, array $cases)
+  return array_values($folder);
+}
+
+/**
+ * Function to get collection of files with specified extension.
+ * @return array
+ */
+function getFileCollection(array $folder, string $extension) 
+{
+  $array = array();
+
+  foreach ($folder as $file) 
   {
-    $horizontal_index = 0;
-    $vertical_index_list = array(
-      0 => true,
-      1 => false,
-      2 => false,
-      3 => true
-    );
-
-    foreach ($cases as $case)
+    if (pathinfo($file)["extension"] === $extension)
     {
-      $case_path = "/assets" . "/case" . "/" . $case->folder_name . "/";
-      $heading = $case->title;
-      $thumbnail = $case->thumbnail;
-      $slug = $case->link;
-
-      if ($horizontal_index === 4)
-      {
-        $horizontal_index = 0;
-      }
-
-      $vertical_index = $vertical_index_list[$horizontal_index];
-      $horizontal_index++;
-
-      require(__DIR__ . '/case.php');
+      array_push($array, $file);
     }
   }
-?>
+  
+  return $array;
+}
+
+function renderCaseCards(string $path, array $cases)
+{
+  $horizontal_index = 0;
+  $vertical_index_list = array(
+    0 => true,
+    1 => false,
+    2 => false,
+    3 => true
+  );
+
+  foreach ($cases as $case)
+  {
+    $case_path = "/assets" . "/case" . "/" . $case->folder_name . "/";
+    $heading = $case->title;
+    $thumbnail = $case->thumbnail;
+    $slug = $case->link;
+
+    if ($horizontal_index === 4)
+    {
+      $horizontal_index = 0;
+    }
+
+    $vertical_index = $vertical_index_list[$horizontal_index];
+    $horizontal_index++;
+
+    require(__DIR__ . '/case.php');
+  }
+}
