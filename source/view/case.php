@@ -2,11 +2,14 @@
 <section class="row component-case">
   <div class="content-wrapper content-horizontal-<?php print_r(($horizontal_index % 2) ? 'left' : 'right'); ?> content-vertical-<?php print_r($vertical_index ? 'top' : 'bottom'); ?>">
     <div class="card card-case">
-      <a class="card-wrapper" href="<?php /* print_r($cases_path); */ ?>">
+      <a class="card-wrapper" href="./case/?case=<?php print_r($case->folder_name); ?>">
         <figure class="image-wrapper">
-          <img class="image" alt="" src="<?php print_r($case_path . $thumbnail); ?>">
+          <?php
+            $image = $case->thumbnail;
+            require('image.php');
+          ?>
         </figure>
-        <h2 class="heading"><?php print_r($heading); ?></h2>
+        <h2 class="heading"><?php print_r($case->title); ?></h2>
       </a>
     </div>
   </div>
