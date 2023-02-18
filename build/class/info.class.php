@@ -54,11 +54,11 @@ class infoComponent
   }
 }
 
-foreach ($info_folder as $info) 
+foreach ($info_folder as $info)
 {
   $info_item_path = $info_path . $info . "/";
   $info_item_folder = sanitize(scandir($info_item_path));
-  $info_item_title = ucfirst(trim(str_replace("_", " ", $info)));
+  $info_item_title = ucfirst(trim(str_replace(".txt", " ", str_replace("_", " ", implode("", getFileCollection($info_item_folder, 'txt'))))));
   $info_item_paragraph = file_get_contents($info_item_path . implode("", getFileCollection($info_item_folder, 'txt')));
   $info_item_images = getFileCollection($info_item_folder, 'jpg');
   $info_item_path = "/assets" . "/info" . "/" . $info . "/";

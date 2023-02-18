@@ -66,7 +66,7 @@ foreach ($cases_folder as $case)
 {
   $case_path = $cases_path . "$case" . "/";
   $case_folder = sanitize(scandir($case_path));
-  $case_title = ucfirst(trim(str_replace("_", " ", $case)));
+  $case_title = ucfirst(trim(str_replace(".txt", " ", str_replace("_", " ", implode("", getFileCollection($case_folder, 'txt'))))));;
   $case_paragraph = file_get_contents($case_path . implode("", getFileCollection($case_folder, "txt")));
   $case_images = getFileCollection($case_folder, 'jpg');
   $case_thumbnail = $case_images[0]; /* /!\ Needs refinement */

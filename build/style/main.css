@@ -147,6 +147,9 @@ header .menu-list {
   left: 0;
   top: 0;
 }
+.home-page header li#home {
+  display: none;
+}
 
 main {
   display: flex;

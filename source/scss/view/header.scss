@@ -13,4 +13,8 @@ header {
 // Overwrite for homepage
 .home-page header {
   @include object-fixed();
+
+  li#home {
+    display: none;
+  }
 }
