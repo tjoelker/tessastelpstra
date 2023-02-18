@@ -1,6 +1,5 @@
 // Main
 main {
-  background-color: sandybrown;
   display: flex;
   align-items: center;
   flex: 1;
@@ -14,6 +13,7 @@ main {
     height: $dimension-100-percent;
     perspective: $perspective;
     perspective-origin: 50% 50%;
+    scroll-behavior: smooth;
     transform-style: preserve-3d;
   }
 }
@@ -21,5 +21,5 @@ main {
 // Overwrite for homepage
 .home-page main {
     @include object-fixed();
-    padding: $gutter;
+    padding: $element-spacing;
   }

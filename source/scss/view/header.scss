@@ -1,12 +1,12 @@
 // Header
 header {
-  padding: $gutter;
+  padding: $element-spacing;
   z-index: 1;
 
   .menu-list {
     @include clear-list-style-type;
     display: flex;
-    gap: $gutter;
+    gap: $element-spacing;
   }
 }
 
