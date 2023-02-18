@@ -1,4 +1,7 @@
-<?php require(__DIR__ . "/class" . "/case.class.php"); ?>
+<?php
+  require(__DIR__ . "/class" . "/case.class.php");
+  require(__DIR__ . "/class" . "/info.class.php");
+?>
 <!DOCTYPE html>
 <html lang="nl-NL" class="home-page">
 <head>

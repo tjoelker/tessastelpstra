@@ -1,6 +1,6 @@
-<?php 
+<?php
   require(__DIR__ . "/.." . "/class" . "/case.class.php");
-  $case_key = $_GET['case'];
+  $case_key = $_GET['page'];
   $case = $cases[$case_key];
 ?>
 <!DOCTYPE html>
