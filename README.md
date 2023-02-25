@@ -1,0 +1,3 @@
+# Portfolio website of Tessa Stelpstra
+This website is build for Tessa Stelpstra, a professional photographer, who needed a unique site to display her work. In the front-end, this website utilizes a z-axis scroll effect to recreate the depth of field effect present in photography. In the back-end, the website loads content by scraping specific locations in the folder/file structure on the server. This way, the end-user can manipulate the content of the site by only adding or modifying the folders and files on the server.
+I chose to build the project with PHP to get more familiar with the language. Future plans are to rebuild it with a JavaScript framework (React or Vue).
